@@ -1,0 +1,605 @@
+<!DOCTYPE HTML>
+<!--
+-->
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="right-sidebar is-preload">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<section id="header">
+
+					<!-- Logo -->
+						<h1><a href="index.html"></a></h1>
+
+					<!-- Nav -->
+						<nav id="nav">
+							<ul>
+								<li><a href="index.html">INICIO</a></li>
+								<li><a href="left-sidebar.html">SOBRE NÓS</a></li>
+								<li class="current"><a href="right-sidebar.html">LOCALIZAÇÕES</a></li>
+								<li><a href="no-sidebar.html">SUPORTE</a></li>
+							</ul>
+						</nav>
+
+				</section>
+
+			<!-- Main -->
+				<section id="main">
+					<div class="container">
+						<div class="row">
+							<div class="col-8 col-12-medium">
+
+								<!-- Content -->
+									<article class="box post">
+										<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+										<header>
+											<h1>LOCALIZE-SE NO MAPA DE ACORDO COM A CLINICA ESPECÍFICA:</h1>
+
+											<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Locais Próximos</title>
+    <style>
+        /* Estilos para a caixa "Digite a localização" */
+        .location-input-container {
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+        }
+        .location-input-container input[type="text"] {
+            flex: 1;
+            border: none;
+            outline: none;
+            font-size: 16px;
+            padding: 10px;
+            border-radius: 5px;
+            margin-right: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .location-input-container input[type="text"]::placeholder {
+            color: #aaa;
+        }
+        .location-input-container button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+        .location-input-container button:hover {
+            background-color: #45a049;
+        }
+        .location-input-container button svg {
+            margin-right: 5px;
+        }
+
+        /* Outros estilos */
+        #map-container {
+            width: 80%;
+            margin: 0 auto;
+            border: 2px solid #ccc; /* Adicionando moldura ao redor do mapa */
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        #map {
+            height: 600px;
+            width: 100%;
+        }
+        #tipoClinica {
+            margin-bottom: 10px;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .btn-container {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: flex-end; /* Alinhar botões à direita */
+        }
+        #rotaBtn {
+            margin-left: 10px;
+        }
+        .info-wrapper {
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        .info-wrapper h2 {
+            margin-top: 0;
+            font-size: 24px;
+            color: #333;
+        }
+        .info-wrapper p {
+            margin-bottom: 10px;
+            font-size: 16px;
+            color: #555;
+        }
+        .info-wrapper a {
+            display: block;
+            margin-top: 10px;
+            color: #4CAF50;
+            font-size: 16px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .info-wrapper a:hover {
+            color: #45a049;
+        }
+        .clinic-photo {
+            max-width: 100%;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        #footer {
+            text-align: center;
+            margin-top: 20px;
+        }
+        #footer p {
+            font-size: 14px;
+            color: #777;
+        }
+        #rotaBtn {
+            background-color: #008CBA;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+        #rotaBtn:hover {
+            background-color: #005f79;
+        }
+        #rotaBtn svg {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="location-input-container">
+        <input type="text" id="enderecoInput" placeholder="Digite sua localização">
+        <button id="buscarBtn" onclick="buscarLocais()">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M22 21l-7-7V3h-2v4L3 2 1 4l5 5-4 4 2 2 7-7 9 9zM11 7.08V13h1V7.08l3.91 3.91-1.03 1.03L12 9.14l-2.89 2.88-1.03-1.03L11 7.08z"/></svg>
+            Buscar
+        </button>
+    </div>
+
+    <div class="btn-container">
+        <select id="tipoClinica">
+            <option value="nutricionista">Nutricionista</option>
+            <option value="psicologia">Psicologia</option>
+            <option value="odontologia">Odontologia</option>
+            <option value="oftalmologia">Oftalmologia</option>
+            <option value="ginecologia">Ginecologia</option>
+            <option value="urologia">Urologia</option>
+            <option value="otorrinolaringologia">Otorrinolaringologia</option>
+            <option value="musicoterapia">Musicoterapia</option>
+            <option value="fonoaudiologia">Fonoaudiologia</option>
+            <option value="psicomotricidade">Psicomotricidade</option>
+            <option value="psiquiatria">Psiquiatria</option>
+        </select>
+        <button id="rotaBtn">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M22 21l-7-7V3h-2v4L3 2 1 4l5 5-4 4 2 2 7-7 9 9zM11 7.08V13h1V7.08l3.91 3.91-1.03 1.03L12 9.14l-2.89 2.88-1.03-1.03L11 7.08z"/></svg>
+            Traçar Rota
+        </button>
+    </div>
+
+    <div id="map-container">
+        <div id="map"></div>
+    </div>
+
+    <script>
+        var map;
+        var autocomplete;
+        var markers = []; // Array para armazenar os marcadores
+
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 12,
+                center: { lat: -23.5505, lng: -46.6333 }, // São Paulo, Brasil
+                styles: [
+                    // Estilos do mapa
+                ],
+                fullscreenControl: false // Removendo controle de tela cheia
+            });
+
+            var input = document.getElementById('enderecoInput');
+            autocomplete = new google.maps.places.Autocomplete(input);
+            autocomplete.setFields(['geometry']);
+        }
+
+        function buscarLocais() {
+            var endereco = document.getElementById('enderecoInput').value;
+            var tipoClinica = document.getElementById('tipoClinica').value;
+
+            // Limpar marcadores anteriores
+            limparMarcadores();
+
+            var geocoder = new google.maps.Geocoder();
+
+            geocoder.geocode({ 'address': endereco }, function(results, status) {
+                if (status === 'OK') {
+                    var localizacao = results[0].geometry.location;
+                    map.setCenter(localizacao);
+                    map.setZoom(15);
+
+                    var request = {
+                        location: localizacao,
+                        radius: '5000', // Raio de busca em metros
+                        keyword: tipoClinica
+                    };
+
+                    var service = new google.maps.places.PlacesService(map);
+                    service.nearbySearch(request, function(results, status) {
+                        if (status === google.maps.places.PlacesServiceStatus.OK) {
+                            for (var i = 0; i < results.length; i++) {
+                                criarMarcador(results[i]);
+                            }
+                        }
+                    });
+                } else {
+                    // Alerta para falha na geocodificação!!!
+                    alert('Geocode falhou devido a: ' + status);
+                }
+            });
+        }
+
+        function criarMarcador(local) {
+            var marker = new google.maps.Marker({
+                map: map,
+                position: local.geometry.location,
+                title: local.name
+            });
+
+            markers.push(marker); // Adicionar marcador ao array
+
+            var service = new google.maps.places.PlacesService(map);
+            service.getDetails({
+                placeId: local.place_id
+            }, function(place, status) {
+                if (status === google.maps.places.PlacesServiceStatus.OK) {
+                    var infowindowContent = `
+                        <div class="info-wrapper">
+                            <h2>${place.name}</h2>
+                            <p>Endereço: ${place.formatted_address}</p>
+                    `;
+
+                    if (place.opening_hours && place.opening_hours.open_now) {
+                        infowindowContent += `<p>Aberto agora: Sim</p>`;
+                    } else {
+                        infowindowContent += `<p>Aberto agora: Não</p>`;
+                    }
+
+                    if (place.rating) {
+                        infowindowContent += `<p>Avaliação: ${place.rating}</p>`;
+                    }
+
+                    if (place.formatted_phone_number) {
+                        infowindowContent += `<p>Telefone: ${place.formatted_phone_number}</p>`;
+                    }
+
+                    if (place.website) {
+                        infowindowContent += `<p>Website: <a href="${place.website}" target="_blank">${place.website}</a></p>`;
+                    }
+
+                    if (place.photos && place.photos.length > 0) {
+                        var photoUrl = place.photos[0].getUrl({ maxWidth: 300, maxHeight: 200 });
+                        infowindowContent += `<img src="${photoUrl}" class="clinic-photo">`;
+                    }
+
+                    infowindowContent += `</div>`;
+
+                    var infowindow = new google.maps.InfoWindow({
+                        content: infowindowContent
+                    });
+
+                    marker.addListener('click', function() {
+                        infowindow.open(map, marker);
+                    });
+                }
+            });
+        }
+
+        function limparMarcadores() {
+            // Remover todos os marcadores do mapa
+            for (var i = 0; i < markers.length; i++) {
+                markers[i].setMap(null);
+            }
+            // Limpar o array de marcadores
+            markers = [];
+        }
+
+        // Atualizar título de acordo com o tipo de clínica selecionado
+        document.getElementById('tipoClinica').addEventListener('change', function() {
+            var tipoSelecionado = this.value.charAt(0).toUpperCase() + this.value.slice(1);
+            document.title = "Locais de " + tipoSelecionado;
+        });
+
+        // Adicionar funcionalidade de traçar rota
+        document.getElementById('rotaBtn').addEventListener('click', function() {
+            var enderecoDestino = document.getElementById('enderecoInput').value;
+            var tipoClinica = document.getElementById('tipoClinica').value;
+            var destino = enderecoDestino + " " + tipoClinica;
+
+            // Abrir Google Maps com a rota até o destino
+            window.open('https://www.google.com/maps/dir/?api=1&destination=' + encodeURIComponent(destino), '_blank');
+        });
+
+        // Adicionar funcionalidade de pressionar a tecla "Enter" para enviar o formulário
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                buscarLocais();
+            }
+        });
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAVsPePbJDCtjBLOqjm3JfiNQ_Jf_Eqgno&callback=initMap&libraries=places&language=pt-BR&region=BR" async defer></script>
+    <div id="footer">
+        <p>Desenvolvido por [Gustavo Farias], &copy; 2024</p>
+    </div>
+</body>
+</html>
+            
+										
+					  	<h1>   </h1>
+										</header>
+										<p>
+											
+										</p>
+										<p>
+											
+										</p>
+										<section>
+											<header>
+												<h3></h3>
+											</header>
+											<p>
+												
+											</p>
+											<p>
+												
+											</p>
+										</section>
+										<section>
+											<header>
+												<h3>   </h3>
+											</header>
+											<p>
+												
+											</p>
+										</section>
+									</article>
+
+							</div>
+							<div class="col-4 col-12-medium">
+
+								<!-- Sidebar -->
+									<section class="box">
+										<a href="#" class="image featured"><img src="images/pic09.jpg" alt="" /></a>
+										<header>
+											<h3>   Encontre Clínicas Próximas a Você!	</h3>
+										</header>
+										<h1>Digite sua Localização:</h1> <p>No campo de busca, digite o seu endereço ou o nome do local onde você está.</p>
+
+										<h1>Escolha a Especialidade:</h1> <p> Selecione o tipo de clínica que você está procurando no menu suspenso. Temos uma variedade de opções, como "Nutricionista", "Psicologia", "Odontologia" e muito mais.</p>
+											
+                                        
+<h1>Zoom no Mapa:</h1>
+<p>Por favor, note que é necessário usar os botões de adicionar (+) e subtrair (-) no canto inferior direito do mapa para ampliar e reduzir, respectivamente. Isso permitirá que você visualize clínicas em outras áreas ao redor de sua localização atual.</p>
+
+										<h1>Clique em Buscar:</h1>   <p> Depois de preencher sua localização e selecionar a especialidade desejada, clique no botão "Buscar". </p>
+											
+										<h1>Veja no Mapa:</h1> <p> mapa abaixo mostrará as clínicas próximas a você. Cada marcador no mapa representa uma clínica da especialidade que você escolheu. </p>
+											
+										<h1>Traçar Rota:</h1>  <p>Se você quiser saber como chegar a uma clínica específica, clique no botão "Traçar Rota". Isso abrirá o Google Maps com a rota até essa clínica.</p>
+										
+									</section>
+									<section class="box">
+										<header>
+											<h3>Em breve, novas funcionalidades estarão disponíveis!</h3>
+										</header>
+										<p>	
+										Estamos constantemente trabalhando para melhorar sua experiência. Fique ligado para descobrir as emocionantes novidades que estão a caminho! Se você tiver sugestões ou solicitações específicas, não hesite em nos contatar. Agradecemos por fazer parte da nossa comunidade!</p>
+										<footer>
+                                            <a href="https://api.whatsapp.com/send?phone=+554598441706&text=Sugestões%20da%20Clinical" class="button alt" target="_blank">SUGESTÕES</a>
+										</footer>
+									</section>
+
+							</div>
+						</div>
+					</div>
+				</section>
+
+<!-- Footer -->
+<section id="footer">
+	<div class="container">
+		<div class="row">
+			<div class="col-8 col-12-medium">
+				<section>
+					<header>
+						<h2>AVISOS</h2>
+					</header>
+					<ul class="dates">
+						<li>
+							<span class="date">Jan <strong>27</strong></span>
+							<h3><a href="#">TITULO</a></h3>
+							<p>     SUBTITULO     </p>
+						</li>
+						<li>
+							<span class="date">Jan <strong>23</strong></span>
+							<h3><a href="#">TITULO</a></h3>
+							<p>SUBTITULO</p>
+						</li>
+						<li>
+							<span class="date">Jan <strong>15</strong></span>
+							<h3><a href="#">TITULO</a></h3>
+							<p>SUBTITULO</p>
+						</li>
+						<li>
+							<span class="date">Jan <strong>12</strong></span>
+							<h3><a href="#">TITULO</a></h3>
+							<p>SUBTITULO</p>
+						</li>
+						<li>
+							<span class="date">Jan <strong>10</strong></span>
+							<h3><a href="#">TITULO</a></h3>
+							<p>SUBTITULO</p>
+						</li>
+					</ul>
+				</section>
+			</div>
+			<div class="col-4 col-12-medium">
+				<section>
+					<header>
+						<h2>QUEM SOMOS:</h2>
+					</header>
+					<a href="#" class="image featured"><img src="images/pic10.jpg" alt="" /></a>
+					<h2>
+						SOMOS UM SOFTWARE ESPECIALIZADO EM TRAZER A MELHOR LOCALIDADE CLINICAL ATÉ VOCÊ.
+						<a href="http://twitter.com/ajlkn"></a> <a href="http://html5up.net/"></a> 
+						<a href="http://html5up.net/license/"></a> 
+					</h2>
+				</section>
+			</div>
+			<div class="col-4 col-6-medium col-12-small">
+				<section>
+					<header>
+						<h2>INFORMAÇÕES</h2>
+					</header>
+					<ul class="divided">
+						<li><a href="#">PROJETO EM DESENVOLVIMENTO</a></li>
+						<li><a href="#">TEMOS O INTUITO DE TRAZER A MELHOR LOCALIZADADE CLINICAL ATÉ VOCÊ.</a></li>
+						<li><a href="#">ACESSE NOSSAS REDES SOCIAIS AO LADO.</a></li>
+						<li><a href="#">TENHA PACIÊNCIA COM O SUPORTE.</a></li>					
+						<li><a href="#">LOGO IREMOS LANÇAR UM APP DO CLINICAL HUB PARA SATISFAZER SUA BUSCA.</a></li>
+					</ul>
+				</section>
+			</div>
+			<div class="col-4 col-6-medium col-12-small">
+				<section>
+					<header>
+						<h2>TERMOS DE SERVIÇO</h2>
+					</header>
+					<ul class="divided">
+						<body>
+
+                            <ul>
+                                <li>
+                                    <a href="#">
+                                        <h3>Termos de Serviço do ClinicalSearch</h3>
+                                    </a>
+                                    <h>
+                                        Por favor, leia atentamente estes termos de serviço ("Termos") antes de usar o ClinicalSearch (o "Serviço") fornecido pela nossa empresa.
+                                    </h>
+                                    
+                                    <h4>1. Uso do Serviço</h4>
+                                    <h>
+                                        O ClinicalSearch é uma plataforma de pesquisa que fornece informações sobre clínicas e profissionais de saúde em determinadas áreas.
+                                        Concordância em utilizar as informações apenas para fins informativos, não para diagnóstico ou tratamento médico.
+                                    </h>
+                            
+                                    <h4>2. Conteúdo do Usuário</h4>
+                                    <h>
+                                        Os usuários podem contribuir com conteúdo, como avaliações e comentários sobre clínicas e profissionais de saúde.
+                                        Declaração de direitos sobre o conteúdo enviado e garantia de que não infringe os direitos de terceiros.
+                                        Reserva do direito de moderação e remoção de conteúdo inadequado ou violador dos Termos.
+                                    </h>
+                            
+                                    <h4>3. Links para Sites de Terceiros</h4>
+                                    <h>
+                                        O Serviço pode conter links para sites de terceiros ou recursos não controlados por nós.
+                                        Isenção de responsabilidade sobre o conteúdo, políticas de privacidade ou práticas de sites de terceiros.
+                                    </h>
+                            
+                                    <h4>4. Alterações nos Termos</h4>
+                                    <h>
+                                        Reserva do direito de modificar ou substituir estes Termos a qualquer momento.
+                                        Tentativa de fornecer aviso prévio razoável antes que os novos termos entrem em vigor, se a revisão for material.
+                                    </h>
+                                </li>
+                            </ul>
+                            
+                            </body>
+					</ul>
+				</section>
+			</div>
+			<div class="col-4 col-12-medium">
+				<section>
+					<header>
+						<h2>REDES SOCIAIS</h2>
+					</header>
+					<ul class="social">
+						<li><a class="icon brands fa-facebook-f" href="https://www.facebook.com/?locale=pt_BR"><span class="label">Facebook</span></a></li>
+						<li><a class="icon brands fa-twitter" href="#"><span class="label">Twitter</span></a></li>
+						<li><a class="icon brands fa-dribbble" href="#"><span class="label">Dribbble</span></a></li>
+						<li><a class="icon brands fa-tumblr" href="#"><span class="label">Tumblr</span></a></li>
+						<li><a class="icon brands fa-linkedin-in" href="#"><span class="label">LinkedIn</span></a></li>
+					</ul>
+					<ul class="contact">
+						<li>
+							<h3>Email</h3>
+							<h>
+								clinicalsearchcvel@outlook.com<br />
+								BRAZIL - PARANÁ<br />
+								CASCAVEL MUNICÍPIO.
+							</h>
+						</li>
+
+						<li>
+							<h3>Fone:</h3>
+							<h>(45) 991281167</h>
+						</li>
+					</ul>
+				</section>
+			</div>
+			<div class="col-12">
+
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul class="links">
+							<li>&copy; Todos os direitos reservados CLINICALSEARCH.</li><li></a></li>
+						</ul>
+					</div>
+
+			</div>
+		</div>
+	</div>
+</section>
+
+</div>
+
+<!-- Scripts -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery.dropotron.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+
+</body>
+</html>
